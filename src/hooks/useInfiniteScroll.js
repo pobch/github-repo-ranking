@@ -72,8 +72,8 @@ export function useInfiniteScroll() {
       if (
         !isLastPage &&
         !isFetchingInfiniteScroll.current &&
-        // start fetching on 50px above the end of the viewport
-        document.documentElement.clientHeight + window.pageYOffset >= scrollHeight - 50
+        // start fetching on 150px above the end of the viewport
+        document.documentElement.clientHeight + window.pageYOffset >= scrollHeight - 150
       ) {
         fetchData(nextPageUrl)
       }
