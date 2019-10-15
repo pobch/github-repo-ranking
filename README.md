@@ -4,6 +4,7 @@
 - new Date().toISOString()
 - https://api.github.com/search/repositories?q=created:>2019-10-13T00:00:01Z&sort=stars&order=desc&per_page=5&page=2
 - test 30 day with month that contain 30, 31 days
+- debounce while scrolling
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
