@@ -22,7 +22,17 @@ function App() {
         stars:
       </p>
       {repos.map(repo => {
-        return <Card key={repo.id} title={repo.name} repoUrl={repo.html_url} />
+        return (
+          <Card
+            key={repo.id}
+            title={repo.name}
+            repoUrl={repo.html_url}
+            description={repo.description}
+            starAmount={repo.stargazers_count}
+            forkAmount={repo.forks_count}
+            mainLanguage={repo.language}
+          />
+        )
       })}
       {isLoading && <Loading />}
     </Layout>
