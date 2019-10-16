@@ -34,12 +34,14 @@ export function useInfiniteScroll() {
         setNextPageUrl(next)
       } else {
         setIsLastPage(true)
+        setNextPageUrl('')
       }
 
       // find all repo data
       const repos = response.data && response.data.items
       if (repos) {
         setRepos(prevRepos => [...prevRepos, ...repos])
+        setIsError(false)
       } else {
         throw new Error('There is no repository data')
       }

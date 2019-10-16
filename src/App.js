@@ -3,11 +3,29 @@ import styled from 'styled-components'
 import { useInfiniteScroll } from './hooks/useInfiniteScroll'
 import Card from './components/Card'
 import Loading from './components/Loading'
+import Error from './components/Error'
+import { MEDIA } from './utils/styles'
 
 // STYLES
 const Layout = styled.div`
   width: 100%;
   padding: 20px;
+  ${MEDIA.DESKTOP`
+    max-width: 750px;
+    margin: 0 auto;
+  `}
+`
+const Heading = styled.h1`
+  margin-bottom: 8px;
+`
+const Description = styled.p`
+  margin-bottom: 8px;
+`
+const End = styled.div`
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-style: italic;
 `
 
 // COMPONENT
@@ -16,11 +34,11 @@ function App() {
 
   return (
     <Layout>
-      <h1>Repo Ranking Page</h1>
-      <p>
-        GitHub's public repositories which are created in the past 30 days, ranked by the number of
-        stars:
-      </p>
+      <Heading>Repo Ranking</Heading>
+      <Description>GitHub's public repositories created in the past 30 days</Description>
+      <div>
+        Rank by: <em>Star</em>
+      </div>
       {repos.map(repo => {
         return (
           <Card
@@ -34,7 +52,9 @@ function App() {
           />
         )
       })}
+      {isLastPage && <End>-- END --</End>}
       {isLoading && <Loading />}
+      {isError && <Error />}
     </Layout>
   )
 }
