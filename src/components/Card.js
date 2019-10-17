@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { MEDIA } from '../utils/styles'
 
 // STYLES
-const Wrapper = styled.div`
+const Wrapper = styled.article`
   margin: 20px 0;
   padding: 10px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
@@ -34,7 +34,7 @@ function Card(props) {
   const { title, repoUrl, description, starAmount, forkAmount, mainLanguage } = props
 
   return (
-    <Wrapper>
+    <Wrapper data-testid="repo-card">
       <Title>{title}</Title>
       <Description>{description}</Description>
       <div>

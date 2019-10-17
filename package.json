@@ -7,6 +7,9 @@
     "@testing-library/react": "^9.3.0",
     "@types/jest": "^24.0.19",
     "axios": "^0.19.0",
+    "cypress": "^3.4.1",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-cypress": "^2.7.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0",
@@ -19,7 +22,18 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "plugins": [
+      "cypress",
+      "chai-friendly"
+    ],
+    "rules": {
+      "no-unused-expressions": 0,
+      "chai-friendly/no-unused-expressions": 2
+    },
+    "env": {
+      "cypress/globals": true
+    }
   },
   "browserslist": {
     "production": [
