@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import axios from 'axios'
+import _ from 'lodash'
 import { parseLinkHeader } from '../utils/parseLinkHeader'
 import { generateInitURL } from '../utils/generateInitURL'
 
@@ -80,8 +81,10 @@ export function useInfiniteScroll() {
       }
     }
 
-    window.addEventListener('scroll', infiniteScroll)
-    return () => window.removeEventListener('scroll', infiniteScroll)
+    const debounceInfiniteScroll = _.debounce(infiniteScroll, 200)
+    window.addEventListener('scroll', debounceInfiniteScroll)
+
+    return () => window.removeEventListener('scroll', debounceInfiniteScroll)
   }, [fetchData, isLastPage, nextPageUrl])
 
   // return of this hook
