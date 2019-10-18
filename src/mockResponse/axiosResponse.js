@@ -37,3 +37,43 @@ export const FIRST_PAGE = {
     status: 200
   }
 }
+
+export const LAST_PAGE = {
+  RESPONSE: {
+    data: {
+      items: [
+        {
+          id: 100,
+          description: 'mock description 100',
+          forks_count: 11,
+          html_url: 'mock-url-100',
+          language: 'lang 100',
+          name: 'mock-name-100',
+          stargazers_count: 10
+        },
+        {
+          id: 200,
+          description: 'mock description 200',
+          forks_count: 22,
+          html_url: 'mock-url-200',
+          language: 'lang 200',
+          name: 'mock-name-200',
+          stargazers_count: 20
+        },
+        {
+          id: 300,
+          description: 'mock description 300',
+          forks_count: 33,
+          html_url: 'mock-url-300',
+          language: 'lang 300',
+          name: 'mock-name-300',
+          stargazers_count: 30
+        }
+      ]
+    },
+    headers: {
+      link: '<https://mock-url-page-99>; rel="prev", <https://mock-url-page-1>; rel="first"'
+    },
+    status: 200
+  }
+}

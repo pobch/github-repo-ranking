@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useCallback } from 'react'
 import axios from 'axios'
 import { parseLinkHeader } from '../utils/parseLinkHeader'
-import { genInitApiCall } from '../utils/genInitApiCall'
+import { generateInitURL } from '../utils/generateInitURL'
 
 export function useInfiniteScroll() {
   // state which will be a return value of this hook
@@ -47,7 +47,6 @@ export function useInfiniteScroll() {
       }
     } catch (e) {
       setIsError(true)
-      console.error(e)
     }
     setIsLoading(false)
     isFetchingInfiniteScroll.current = false
@@ -55,7 +54,7 @@ export function useInfiniteScroll() {
 
   // fetch first page
   useEffect(() => {
-    fetchData(genInitApiCall())
+    fetchData(generateInitURL(new Date()))
   }, [fetchData])
 
   // implement infinite scroll

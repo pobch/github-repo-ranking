@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect'
 import React from 'react'
-import { render, waitForElement } from '@testing-library/react'
+import { render, waitForElement, wait } from '@testing-library/react'
 import mockAxios from 'axios'
 import App from '../App'
-import { FIRST_PAGE } from '../mockResponse/axiosResponse'
+import { FIRST_PAGE, LAST_PAGE } from '../mockResponse/axiosResponse'
 
 jest.mock('axios', () => {
   return {
@@ -28,4 +28,16 @@ test('cards display content correctly', async () => {
   expect(getByText(/lang 1/i)).toBeInTheDocument()
   // link
   expect(getAllByText(/github link/i)[0]).toHaveAttribute('href', 'mock-url-1')
+})
+
+test('display error message when there is an api error', async () => {
+  mockAxios.get.mockRejectedValue(new Error())
+  const { getByText } = render(<App />)
+  await wait(() => expect(getByText(/please refresh the page/i)).toBeInTheDocument())
+})
+
+test('display ending message at the bottom of the last page', async () => {
+  mockAxios.get.mockResolvedValue(LAST_PAGE.RESPONSE)
+  const { getByText } = render(<App />)
+  await wait(() => expect(getByText(/-- end --/i)).toBeInTheDocument())
 })
