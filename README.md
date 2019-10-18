@@ -36,3 +36,7 @@ https://repo-ranking.netlify.com/
 
 - The website is responsive by using `grid` layout. The breakpoint, which is used to separate the mobile and desktop layout, is **576px** screen width.
 - Unit, integration and e2e tests included
+
+## TODO
+
+- add comment in `.js` file
