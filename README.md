@@ -40,3 +40,5 @@ https://repo-ranking.netlify.com/
 ## TODO
 
 - add comment in `.js` file
+- type guard and test
+- propTypes
