@@ -45,10 +45,10 @@ function App() {
             key={repo.id}
             title={repo.name}
             repoUrl={repo.html_url}
-            description={repo.description}
-            starAmount={repo.stargazers_count}
-            forkAmount={repo.forks_count}
-            mainLanguage={repo.language}
+            description={repo.description || '-'}
+            starAmount={repo.stargazers_count || 0}
+            forkAmount={repo.forks_count || 0}
+            mainLanguage={repo.language || '-'}
           />
         )
       })}

@@ -5,7 +5,7 @@ import { parseLinkHeader } from '../utils/parseLinkHeader'
 import { generateInitURL } from '../utils/generateInitURL'
 
 export function useInfiniteScroll() {
-  // state which will be a return value of this hook
+  // state which will be a returned value of this hook
   const [repos, setRepos] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [isError, setIsError] = useState(false)
@@ -14,10 +14,12 @@ export function useInfiniteScroll() {
   // state used only inside this hook
   const [nextPageUrl, setNextPageUrl] = useState('')
 
-  // synchronously update state to prevent redundant fetching
-  // that occurs when the scroll event is triggered multiple times in a row
+  // Synchronously update the Loading state to prevent redundant fetch
+  //  that can be happened when an user scrolls really fast
+  //  and the scroll event is triggered multiple times in a row
   const isFetchingInfiniteScroll = useRef(false)
 
+  // fetching data logic
   const fetchData = useCallback(async url => {
     setIsLoading(true)
     isFetchingInfiniteScroll.current = true
@@ -53,12 +55,12 @@ export function useInfiniteScroll() {
     isFetchingInfiniteScroll.current = false
   }, [])
 
-  // fetch first page
+  // start fetching the first page
   useEffect(() => {
     fetchData(generateInitURL(new Date()))
   }, [fetchData])
 
-  // implement infinite scroll
+  // implement infinite scroll for fetching the next page while reaching the bottom of the page
   useEffect(() => {
     function infiniteScroll() {
       // Height of the whole document regardless of browser/device
@@ -81,13 +83,14 @@ export function useInfiniteScroll() {
       }
     }
 
+    // use debounce to improve the performance
     const debounceInfiniteScroll = _.debounce(infiniteScroll, 200)
     window.addEventListener('scroll', debounceInfiniteScroll)
 
     return () => window.removeEventListener('scroll', debounceInfiniteScroll)
   }, [fetchData, isLastPage, nextPageUrl])
 
-  // return of this hook
+  // the returned value of this hook
   return {
     repos,
     isLoading,

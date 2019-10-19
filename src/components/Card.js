@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { MEDIA } from '../utils/styles'
 
@@ -44,7 +45,7 @@ function Card(props) {
         <strong>Fork</strong>: {forkAmount}
       </div>
       <div>
-        <em>{mainLanguage || '-'}</em>
+        <em>{mainLanguage}</em>
       </div>
       <div>
         <a href={repoUrl} target="_blank" rel="noopener noreferrer">
@@ -53,6 +54,15 @@ function Card(props) {
       </div>
     </Wrapper>
   )
+}
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  repoUrl: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  starAmount: PropTypes.number.isRequired,
+  forkAmount: PropTypes.number.isRequired,
+  mainLanguage: PropTypes.string.isRequired
 }
 
 export default Card

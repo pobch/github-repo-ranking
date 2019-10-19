@@ -6,6 +6,9 @@ function calculatePrevious30Days(beginDate) {
 }
 
 export function generateInitURL(beginDate) {
+  if (!(beginDate instanceof Date)) {
+    throw new Error('The argument need to be a Date object')
+  }
   return `https://api.github.com/search/repositories?q=created:>${calculatePrevious30Days(
     beginDate
   )}&sort=stars&order=desc&per_page=10`

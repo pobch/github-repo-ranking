@@ -31,3 +31,21 @@ test('turns Link header in the response of requesting the last page into an obje
     first: 'https://api.mock.com/q?page=1'
   })
 })
+
+test('wrong argument type throws Error', () => {
+  expect(() => {
+    parseLinkHeader({ link: 'some text' })
+  }).toThrow()
+  expect(() => {
+    parseLinkHeader(['link', 'some text'])
+  }).toThrow()
+  expect(() => {
+    parseLinkHeader(2477456)
+  }).toThrow()
+  expect(() => {
+    parseLinkHeader('')
+  }).toThrow()
+  expect(() => {
+    parseLinkHeader()
+  }).toThrow()
+})

@@ -16,6 +16,7 @@ https://repo-ranking.netlify.com/
 ## Run unit and integration tests
 
 - `yarn test`
+- Test files are in `**/__tests__/` directories
 
 ## Run e2e tests
 
@@ -23,6 +24,7 @@ https://repo-ranking.netlify.com/
 
 - If you use Ubuntu OS, you may need to install these dependencies first `apt-get install xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2`
 - `yarn test:e2e`
+- The test file is `cypress/integration/e2e.spec.js`
 
 ## Features
 
@@ -36,9 +38,5 @@ https://repo-ranking.netlify.com/
 
 - The website is responsive by using `grid` layout. The breakpoint, which is used to separate the mobile and desktop layout, is **576px** screen width.
 - Unit, integration and e2e tests included
-
-## TODO
-
-- add comment in `.js` file
-- type guard and test
-- propTypes
+- Use `prop-types` for important components
+- Style all components by `styled-components`
