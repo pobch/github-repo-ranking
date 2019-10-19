@@ -20,11 +20,12 @@ https://repo-ranking.netlify.com/
 
 ## Run e2e tests
 
-**Note**: Your computer and your internet connection need to be fast enough to finish loading the website before the default timeout. However, you can adjust the timeout by yourself via `cypress.json`
-
-- If you use Ubuntu OS, you may need to install these dependencies first `apt-get install xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2`
 - `yarn test:e2e`
 - The test file is `cypress/integration/e2e.spec.js`
+
+**Note 1**: If you use Ubuntu OS, you may need to install these dependencies first `apt-get install xvfb libgtk-3-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2`
+
+**Note 2**: Your computer and your internet connection need to be fast enough to finish loading the website before the default timeout. However, you can adjust the timeout by yourself via `cypress.json`
 
 ## Features
 
